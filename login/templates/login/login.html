@@ -1,0 +1,24 @@
+<head>
+    <head>
+        <title>iWorkflow</title>
+    </head>
+    <body>
+        <p>hello django</p>
+        <table border="1" width="800" height="500">
+            <tr>
+                <td width="400">
+                </td>
+                <td>
+                    <input type="text" name="user_id" value="user id" onfocus="(this.value == 'user id') && (this.value = '')" onblur="(this.value == '') && (this.value = 'user id')"/>
+                    <br>
+                    <input name="user_pass" value="user pass" setAttribute('type', 'password'); onfocus="if (this.value == 'user pass') {this.value = ''; setAttribute('type', 'password');}" onblur="if (this.value == '') {this.value = 'user pass';setAttribute('type', 'text');}"/>
+                    <br>
+                    <form method="POST" class="post-form">
+                        {% csrf_token %}
+                        <button type="submit" class="login btn btn-default">Login</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </body>
+</head>
