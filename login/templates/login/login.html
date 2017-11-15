@@ -9,14 +9,22 @@
                 <td width="400">
                 </td>
                 <td>
-                    <input type="text" name="user_id" value="user id" onfocus="(this.value == 'user id') && (this.value = '')" onblur="(this.value == '') && (this.value = 'user id')"/>
-                    <br>
-                    <input name="user_pass" value="user pass" setAttribute('type', 'password'); onfocus="if (this.value == 'user pass') {this.value = ''; setAttribute('type', 'password');}" onblur="if (this.value == '') {this.value = 'user pass';setAttribute('type', 'text');}"/>
-                    <br>
-                    <form method="POST" class="post-form">
+                    <!--
+                    <form name="form" action="/login/" method="POST">
+                    -->
+                    <form name="form" action="{% url 'loginCheck' %}" method="POST">
                         {% csrf_token %}
-                        <button type="submit" class="login btn btn-default">Login</button>
+                        <input type="text" name="user_id" value="user id" onfocus="(this.value == 'user id') && (this.value = '')" onblur="(this.value == '') && (this.value = 'user id')"/>
+                        <br>
+                        <input name="user_pass" value="user pass" setAttribute('type', 'password'); onfocus="if (this.value == 'user pass') {this.value = ''; setAttribute('type', 'password');}" onblur="if (this.value == '') {this.value = 'user pass';setAttribute('type', 'text');}"/>
+                        <br>
+                        <button type="submit">Login</button>
                     </form>
+                    {% if loginRet %}
+                    <p>Forget your password</p>
+                    {% else %}
+                    <b><font color="red">Invalid your password</font></b>
+                    {% endif %}
                 </td>
             </tr>
         </table>
