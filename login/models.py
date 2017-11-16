@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+class LoginAdmin(models.Model):
+    class Meata:
+        managed = False
+        db_table = 'iw_admin'
