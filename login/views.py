@@ -15,7 +15,7 @@ def loginCheck(request):
             username = MyLoginForm.cleaned_data['user_id']
             userpass = MyLoginForm.cleaned_data['user_pass']
 
-        loginAdmin = LoginAdmin.objects.values_list('admin_id', 'admin_pass')
+        loginAdmin = LoginAdmin.objects.filter(user_id__exact=username).values_list('user_id', 'user_pass')
         if 0 != len(loginAdmin):
             if userpass == loginAdmin[0][1]:
                 return render(request, 'login/loggedin.html', {"username": username})
