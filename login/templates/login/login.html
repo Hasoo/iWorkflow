@@ -20,10 +20,14 @@
                         <br>
                         <button type="submit">Login</button>
                     </form>
-                    {% if loginRet %}
-                    <p>Forget your password</p>
-                    {% else %}
+                    {% if 0 == loginRet %}
                     <b><font color="red">Invalid your password</font></b>
+                    {% endif %}
+                    {% if 1 == loginRet %}
+                    <a href="">Forget your password</a>
+                    {% endif %}
+                    {% if 2 == loginRet %}
+                    <b><font color="red">Input your id or password</font></b>
                     {% endif %}
                 </td>
             </tr>
