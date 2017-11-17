@@ -3,11 +3,8 @@
         <title>iWorkflow</title>
     </head>
     <body>
-        <p>hello django</p>
-        <table border="1" width="800" height="500">
+        <table border="1" width="300" height="300">
             <tr>
-                <td width="400">
-                </td>
                 <td>
                     <!--
                     <form name="form" action="/login/" method="POST">
@@ -22,12 +19,8 @@
                     </form>
                     {% if 0 == loginRet %}
                     <b><font color="red">Invalid your password</font></b>
-                    {% endif %}
-                    {% if 1 == loginRet %}
+                    {% else %}
                     <a href="">Forget your password</a>
-                    {% endif %}
-                    {% if 2 == loginRet %}
-                    <b><font color="red">Input your id or password</font></b>
                     {% endif %}
                 </td>
             </tr>
