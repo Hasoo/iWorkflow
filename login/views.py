@@ -21,8 +21,7 @@ def login(request):
         if 0 != len(loginAdmin):
             if userpass == loginAdmin[0][1]:
                 request.session['member_id'] = username
-                return redirect('iw_list', name=username)
-                #return render(request, 'board/iw_page.html', {"username": username})
+                return redirect('workflow-list')
 
         return render(request, 'login/index.html', {"loginRet": 0})
     else:

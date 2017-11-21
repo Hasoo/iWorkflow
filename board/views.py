@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
+from django.views.generic import DetailView
 from board.models import Workflow
 
 def iw_list(request):
@@ -12,3 +13,7 @@ class WorkflowListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(WorkflowListView, self).get_context_data(**kwargs)
         return context
+
+class WorkflowDetailView(DetailView):
+
+    model = Workflow

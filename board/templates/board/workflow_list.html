@@ -1,4 +1,33 @@
 {% extends "login/base.html" %}
 
 {% block content %}
+    <table>
+        {% for workflow in object_list %}
+            <tr>
+                <td>
+                    <p>{{ workflow.reg_date }}</p>
+                </td>
+                <td>
+                    <p>{{ workflow.mod_date }}</p>
+                </td>
+                <td>
+                    <p>{{ workflow.status }}</p>
+                </td>
+                <td>
+                    <a href="workflow/{{ workflow.seq }}/">{{ workflow.title }}</a>
+                    <br>
+                    <a href="http://www.naver.com">{{ workflow.title }}</a>
+                </td>
+                <td>
+                    <p>{{ workflow.desc }}</p>
+                </td>
+                <td>
+                    <p>{{ workflow.attach }}</p>
+                </td>
+                <td>
+                    <p>{{ workflow.secret_key }}</p>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

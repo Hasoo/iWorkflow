@@ -7,5 +7,5 @@ class Workflow(models.Model):
     status = models.IntegerField(default=0)
     title = models.CharField(max_length=100)
     desc = models.CharField(max_length=255)
-    attach = models.TextField(blank=True)
-    secret_key = models.CharField(max_length=16, blank=True)
+    attach = models.TextField(null=True, blank=True)
+    secret_key = models.CharField(max_length=16, null=True, blank=True)
