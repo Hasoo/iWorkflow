@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from login.forms import LoginForm
 from login.models import LoginAdmin
+from board import views
+
+def index(request):
+    return render(request, 'login/index.html', {"loginRet": 1})
 
 def login(request):
-    return render(request, 'login/login.html', {"loginRet": 1})
-
-def loginCheck(request):
     username = ""
     userpass = ""
 
@@ -19,14 +21,14 @@ def loginCheck(request):
         if 0 != len(loginAdmin):
             if userpass == loginAdmin[0][1]:
                 request.session['member_id'] = username
-                return render(request, 'board/iw_page.html', {"username": username})
-                #return render(request, 'login/loggedin.html', {"username": username})
+                return redirect('iw_list', name=username)
+                #return render(request, 'board/iw_page.html', {"username": username})
 
-        return render(request, 'login/login.html', {"loginRet": 0})
+        return render(request, 'login/index.html', {"loginRet": 0})
     else:
         MyLoginForm = LoginForm()
 
-    return render(request, 'login/login.html', {"loginRet": 1})
+    return render(request, 'login/index.html', {"loginRet": 1})
 
 def logout(request):
     try:
@@ -34,4 +36,4 @@ def logout(request):
     except KeyError:
         pass
 
-    return render(request, 'login/login.html', {"loginRet": 0})
+    return render(request, 'login/index.html', {"loginRet": 1})

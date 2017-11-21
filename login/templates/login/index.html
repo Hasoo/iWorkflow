@@ -1,11 +1,13 @@
+{% extends "login/base.html" %}
+
 {% block content %}
-    <table border="1" width="300" height="300">
+    <table width="300" height="300">
         <tr>
             <td>
                 <!--
                 <form name="form" action="/login/" method="POST">
                 -->
-                <form name="form" action="{% url 'loginCheck' %}" method="POST">
+                <form name="form" action="{% url 'login' %}" method="POST">
                     {% csrf_token %}
                     <input type="text" name="user_id" value="user id" onfocus="(this.value == 'user id') && (this.value = '')" onblur="(this.value == '') && (this.value = 'user id')"/>
                     <br>
