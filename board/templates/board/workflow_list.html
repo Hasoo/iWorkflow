@@ -14,9 +14,7 @@
                     <p>{{ workflow.status }}</p>
                 </td>
                 <td>
-                    <a href="workflow/{{ workflow.seq }}/">{{ workflow.title }}</a>
-                    <br>
-                    <a href="http://www.naver.com">{{ workflow.title }}</a>
+                    <a href="{% url 'workflow-detail' workflow.seq %}">{{ workflow.title }}</a>
                 </td>
                 <td>
                     <p>{{ workflow.desc }}</p>

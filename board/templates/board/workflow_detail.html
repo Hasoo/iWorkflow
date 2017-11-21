@@ -2,63 +2,61 @@
 
 {% block content %}
     <table>
-        {% for w_detail in object %}
-            <tr>
-                <td>
-                    <p>등록일</p>
-                </td>
-                <td>
-                    <p>{{ w_detail.reg_date }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>변경일</p>
-                </td>
-                <td>
-                    <p>{{ w_detail.mod_date }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>상태</p>
-                </td>
-                <td>
-                    <p>{{ w_detail.status }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>제목</p>
-                </td>
-                <td>
-                    <a href="">{{ w_detail.title }}</a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>내용</p>
-                </td>
-                <td>
-                    <p>{{ w_detail.desc }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>쿼리</p>
-                </td>
-                <td>
-                    <p>{{ w_detail.attach }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <p>압축암호</p>
-                </td>
-                <td>
-                    <p>{{ w_detail.secret_key }}</p>
-                </td>
-            </tr>
-        {% endfor %}
+        <tr>
+            <td>
+                <p>등록일</p>
+            </td>
+            <td>
+                <p>{{ object.reg_date }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>변경일</p>
+            </td>
+            <td>
+                <p>{{ object.mod_date }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>상태</p>
+            </td>
+            <td>
+                <p>{{ object.status }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>제목</p>
+            </td>
+            <td>
+                <a href="">{{ object.title }}</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>내용</p>
+            </td>
+            <td>
+                <p>{{ object.desc }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>쿼리</p>
+            </td>
+            <td>
+                <p>{{ object.attach }}</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>압축암호</p>
+            </td>
+            <td>
+                <p>{{ object.secret_key }}</p>
+            </td>
+        </tr>
     </table>
 {% endblock %}
