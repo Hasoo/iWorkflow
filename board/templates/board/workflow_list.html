@@ -15,7 +15,19 @@
             <tr>
                 <td>{{ workflow.reg_date }}</td>
                 <td>{{ workflow.mod_date }}</td>
-                <td>{{ workflow.status }}</td>
+                {% if workflow.status == 0 %}
+                    <td>등록</td>
+                {% elif workflow.status == 1 %}
+                    <td>승인</td>
+                {% elif workflow.status == 2 %}
+                    <td>처리</td>
+                {% elif workflow.status == 3 %}
+                    <td>완료</td>
+                {% elif workflow.status == 4 %}
+                    <td>반려</td>
+                {% else %}
+                    <td>{{ workflow.status }}</td>
+                {% endif %}
                 <td><a href="{% url 'workflow-detail' workflow.seq %}">{{ workflow.title }}</a></td>
                 <td>{{ workflow.desc }}</td>
                 <td>{{ workflow.attach }}</td>

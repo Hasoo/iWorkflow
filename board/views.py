@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse_lazy, reverse
 from board.models import Workflow
 
 class WorkflowListView(ListView):
@@ -19,4 +19,12 @@ class WorkflowCreate(CreateView):
 
     model = Workflow
     success_url = reverse_lazy('workflow-list')
-    fields = ['title', 'desc', 'secret_key']
+    fields = ['status', 'title', 'desc', 'attach', 'secret_key']
+
+class WorkflowUpdate(UpdateView):
+
+    model = Workflow
+    fields = ['status', 'title', 'desc', 'attach', 'secret_key']
+
+    def get_success_url(self):
+        return reverse('workflow-detail', args=(self.object.pk,))

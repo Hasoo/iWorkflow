@@ -12,7 +12,19 @@
         </tr>
         <tr>
             <th class="text-head">상태</th>
-            <td>{{ object.status }}</td>
+            {% if object.status == 0 %}
+                <td>등록</td>
+            {% elif object.status == 1 %}
+                <td>승인</td>
+            {% elif object.status == 2 %}
+                <td>처리</td>
+            {% elif object.status == 3 %}
+                <td>완료</td>
+            {% elif object.status == 4 %}
+                <td>반려</td>
+            {% else %}
+                <td>{{ object.status }}</td>
+            {% endif %}
         </tr>
         <tr>
             <th class="text-head">제목</th>
@@ -31,4 +43,7 @@
             <td>{{ object.secret_key }}</td>
         </tr>
     </table>
+    <br>
+    <button type="button" onClick="location.href='{% url 'workflow-list' %}'">목록</button>
+    <button type="button" onClick="location.href='{% url 'workflow-update' object.seq %}'">갱신</button>
 {% endblock %}
