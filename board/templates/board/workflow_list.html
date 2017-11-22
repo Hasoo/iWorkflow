@@ -1,31 +1,27 @@
-{% extends "login/base.html" %}
+{% extends "board/base.html" %}
 
 {% block content %}
     <table>
+        <tr>
+            <th>등록일</th>
+            <th>수정일</th>
+            <th>상태</th>
+            <th>제목</th>
+            <th>상세</th>
+            <th>작업</th>
+            <th>암호</th>
+        </tr>
         {% for workflow in object_list %}
             <tr>
-                <td>
-                    <p>{{ workflow.reg_date }}</p>
-                </td>
-                <td>
-                    <p>{{ workflow.mod_date }}</p>
-                </td>
-                <td>
-                    <p>{{ workflow.status }}</p>
-                </td>
-                <td>
-                    <a href="{% url 'workflow-detail' workflow.seq %}">{{ workflow.title }}</a>
-                </td>
-                <td>
-                    <p>{{ workflow.desc }}</p>
-                </td>
-                <td>
-                    <p>{{ workflow.attach }}</p>
-                </td>
-                <td>
-                    <p>{{ workflow.secret_key }}</p>
-                </td>
+                <td>{{ workflow.reg_date }}</td>
+                <td>{{ workflow.mod_date }}</td>
+                <td>{{ workflow.status }}</td>
+                <td><a href="{% url 'workflow-detail' workflow.seq %}">{{ workflow.title }}</a></td>
+                <td>{{ workflow.desc }}</td>
+                <td>{{ workflow.attach }}</td>
+                <td>{{ workflow.secret_key }}</td>
             </tr>
         {% endfor %}
     </table>
+    {% include 'board/pagination.html' %}
 {% endblock %}

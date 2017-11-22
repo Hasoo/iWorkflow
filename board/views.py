@@ -6,6 +6,8 @@ from board.models import Workflow
 class WorkflowListView(ListView):
 
     model = Workflow
+    paginate_by = 3
+    ordering = ['-seq']
 
 class WorkflowDetailView(DetailView):
 
