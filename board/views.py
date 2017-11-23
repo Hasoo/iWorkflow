@@ -21,6 +21,10 @@ class WorkflowCreate(CreateView):
     success_url = reverse_lazy('workflow-list')
     fields = ['status', 'title', 'desc', 'attach', 'secret_key']
 
+    def form_valid(self, form):
+        form.instance.worker = self.request.session['member_id']
+        return super(WorkflowCreate, self).form_valid(form)
+
 class WorkflowUpdate(UpdateView):
 
     model = Workflow

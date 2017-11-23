@@ -42,6 +42,10 @@
             <th class="text-head">압축암호</th>
             <td>{{ object.secret_key }}</td>
         </tr>
+        <tr>
+            <th class="text-head">작업자</th>
+            <td>{{ object.worker }}</td>
+        </tr>
     </table>
     <br>
     <button type="button" onClick="location.href='{% url 'workflow-list' %}'">목록</button>

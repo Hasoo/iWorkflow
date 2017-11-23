@@ -9,3 +9,4 @@ class Workflow(models.Model):
     desc = models.CharField(max_length=255)
     attach = models.TextField(null=True, blank=True)
     secret_key = models.CharField(max_length=16, null=True, blank=True)
+    worker = models.CharField(max_length=20, null=True, blank=True)
