@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--
+    <table width="300" height="300">
+        <tr>
+            <td>
+                <form name="form" action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="user_id" value="user id" onfocus="(this.value == 'user id') && (this.value = '')" onblur="(this.value == '') && (this.value = 'user id')"/>
+                    <br>
+                    <input name="user_pass" value="user pass" setAttribute('type', 'password'); onfocus="if (this.value == 'user pass') {this.value = ''; setAttribute('type', 'password');}" onblur="if (this.value == '') {this.value = 'user pass';setAttribute('type', 'text');}"/>
+                    <br>
+                    <button type="submit">Login</button>
+                </form>
+                {% if 0 == loginRet %}
+                <b><font color="red">Invalid your password</font></b>
+                {% else %}
+                <a href="">Forget your password</a>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+-->
+    <div class="container">
+        <form class="form-signin" name="form" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            {% if 0 == loginRet %}
+                <h2 class="form-signin-heading">Invalid your password</h2>
+            {% else %}
+                <h2 class="form-signin-heading"><a href="#">Forget your password</a></h2>
+            {% endif %}
+            <label for="inputID" class="sr-only">Account ID</label>
+            <input type="text" name="user_id" id="inputID" class="form-control" placeholder="Account ID" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" name="user_pass" id="inputPassword" class="form-control" placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+    <!-- /container -->
+{% endblock %}
