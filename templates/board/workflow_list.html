@@ -1,44 +1,48 @@
-{% extends "base.html" %}
+{% extends "base_main.html" %}
 
 {% block content %}
-    <table class="table table-bordered">
-        <tr>
-            <th>등록일</th>
-            <th>수정일</th>
-            <th>상태</th>
-            <th>제목</th>
-            <th>상세</th>
-            <th>쿼리</th>
-            <th>암호</th>
-            <th>작업자</th>
-        </tr>
-        {% for workflow in object_list %}
-            <tr>
-                <td>{{ workflow.reg_date }}</td>
-                <td>{{ workflow.mod_date }}</td>
-                {% if workflow.status == 0 %}
-                    <td>등록</td>
-                {% elif workflow.status == 1 %}
-                    <td>승인</td>
-                {% elif workflow.status == 2 %}
-                    <td>처리</td>
-                {% elif workflow.status == 3 %}
-                    <td>완료</td>
-                {% elif workflow.status == 4 %}
-                    <td>반려</td>
-                {% else %}
-                    <td>{{ workflow.status }}</td>
-                {% endif %}
-                <td><a href="{% url 'workflow-detail' workflow.seq %}">{{ workflow.title }}</a></td>
-                <td>{{ workflow.desc }}</td>
-                <td>{{ workflow.attach }}</td>
-                <td>{{ workflow.secret_key }}</td>
-                <td>{{ workflow.worker }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-    {% include 'board/pagination.html' %}
-    <br>
-    <button type="button" onClick="location.href='{% url 'workflow-create' %}'">등록</button>
-
+    <div class="container" role="main">
+        <div class="row">
+            <div class="col-lg-10">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>등록일</th>
+                        <th>수정일</th>
+                        <th>상태</th>
+                        <th>제목</th>
+                        <th>상세</th>
+                        <th>쿼리</th>
+                        <th>암호</th>
+                        <th>작업자</th>
+                    </tr>
+                    {% for workflow in object_list %}
+                        <tr>
+                            <td>{{ workflow.reg_date }}</td>
+                            <td>{{ workflow.mod_date }}</td>
+                            {% if workflow.status == 0 %}
+                                <td>등록</td>
+                            {% elif workflow.status == 1 %}
+                                <td>승인</td>
+                            {% elif workflow.status == 2 %}
+                                <td>처리</td>
+                            {% elif workflow.status == 3 %}
+                                <td>완료</td>
+                            {% elif workflow.status == 4 %}
+                                <td>반려</td>
+                            {% else %}
+                                <td>{{ workflow.status }}</td>
+                            {% endif %}
+                            <td><a href="{% url 'workflow-detail' workflow.seq %}">{{ workflow.title }}</a></td>
+                            <td>{{ workflow.desc }}</td>
+                            <td>{{ workflow.attach }}</td>
+                            <td>{{ workflow.secret_key }}</td>
+                            <td>{{ workflow.worker }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% include 'board/pagination.html' %}
+                <button type="button" onClick="location.href='{% url 'workflow-create' %}'">등록</button>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,53 +1,59 @@
-{% extends "base.html" %}
+{% extends "base_main.html" %}
 
 {% block content %}
-    <table class="table table-hover">
-        <tr>
-            <th>등록일</th>
-            <td>{{ object.reg_date }}</td>
-        </tr>
-        <tr>
-            <th>변경일</th>
-            <td>{{ object.mod_date }}</td>
-        </tr>
-        <tr>
-            <th>상태</th>
-            {% if object.status == 0 %}
-                <td>등록</td>
-            {% elif object.status == 1 %}
-                <td>승인</td>
-            {% elif object.status == 2 %}
-                <td>처리</td>
-            {% elif object.status == 3 %}
-                <td>완료</td>
-            {% elif object.status == 4 %}
-                <td>반려</td>
-            {% else %}
-                <td>{{ object.status }}</td>
-            {% endif %}
-        </tr>
-        <tr>
-            <th>제목</th>
-            <td>{{ object.title }}</td>
-        </tr>
-        <tr>
-            <th>내용</th>
-            <td>{{ object.desc }}</td>
-        </tr>
-        <tr>
-            <th>쿼리</th>
-            <td>{{ object.attach }}</td>
-        </tr>
-        <tr>
-            <th>압축암호</th>
-            <td>{{ object.secret_key }}</td>
-        </tr>
-        <tr>
-            <th>작업자</th>
-            <td>{{ object.worker }}</td>
-        </tr>
-    </table>
-    <br>
-    <button type="button" onClick="location.href='{% url 'workflow-list' %}'">목록</button>
-    <button type="button" onClick="location.href='{% url 'workflow-update' object.seq %}'">갱신</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <table class="table table-hover">
+                    <tr>
+                        <th>등록일</th>
+                        <td>{{ object.reg_date }}</td>
+                    </tr>
+                    <tr>
+                        <th>변경일</th>
+                        <td>{{ object.mod_date }}</td>
+                    </tr>
+                    <tr>
+                        <th>상태</th>
+                        {% if object.status == 0 %}
+                            <td>등록</td>
+                        {% elif object.status == 1 %}
+                            <td>승인</td>
+                        {% elif object.status == 2 %}
+                            <td>처리</td>
+                        {% elif object.status == 3 %}
+                            <td>완료</td>
+                        {% elif object.status == 4 %}
+                            <td>반려</td>
+                        {% else %}
+                            <td>{{ object.status }}</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <th>제목</th>
+                        <td>{{ object.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>내용</th>
+                        <td>{{ object.desc }}</td>
+                    </tr>
+                    <tr>
+                        <th>쿼리</th>
+                        <td>{{ object.attach }}</td>
+                    </tr>
+                    <tr>
+                        <th>압축암호</th>
+                        <td>{{ object.secret_key }}</td>
+                    </tr>
+                    <tr>
+                        <th>작업자</th>
+                        <td>{{ object.worker }}</td>
+                    </tr>
+                </table>
+                <br>
+                <button type="button" onClick="location.href='{% url 'workflow-list' %}'">목록</button>
+                <button type="button" onClick="location.href='{% url 'workflow-update' object.seq %}'">갱신</button>
+            </div>
+        </div>
+    </div>
 {% endblock %}

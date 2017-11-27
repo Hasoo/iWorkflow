@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_main.html" %}
 
 {% block content %}
 <!--
@@ -18,42 +18,52 @@
         <input type="submit" value="Submit"/>
     </form>
 -->
-    <form method="post">{% csrf_token %} 
-        {{ form.non_field_errors }}
-        <div class="form-group">
-            {{ form.status.errors }}
-            <label for="{{ form.status.id_for_label }}">상태:</label>
-            <select name="{{ form.status.html_name }}" id="{{ form.status.id_for_label }}">
-                    <option value="0" {% if 0 == form.status.value %}selected="selected"{% endif %}>등록</option>
-                    <option value="1" {% if 1 == form.status.value %}selected="selected"{% endif %}>승인</option>
-                    <option value="2" {% if 2 == form.status.value %}selected="selected"{% endif %}>처리</option>
-                    <option value="3" {% if 3 == form.status.value %}selected="selected"{% endif %}>완료</option>
-                    <option value="4" {% if 4 == form.status.value %}selected="selected"{% endif %}>반려</option>
-            </select>
-            <!--
-            {{ form.status }}
-            -->
-        </div>
-        <div class="form-group">
-            {{ form.subject.errors }}
-            <label for="{{ form.title.id_for_label }}">제목:</label>
-            {{ form.title }}
-        </div>
-        <div class="form-group">
-            {{ form.message.errors }}
-            <label for="{{ form.desc.id_for_label }}">내용:</label>
-            {{ form.desc }}
-        </div>
-        <div class="form-group">
-            {{ form.sender.errors }}
-            <label for="{{ form.attach.id_for_label }}">쿼리:</label>
-            {{ form.attach }}
-        </div>
-        <div class="form-group">
-            {{ form.sender.errors }}
-            <label for="{{ form.secret_key.id_for_label }}">압축암호:</label>
-            {{ form.secret_key }}
-        </div>
-        <button type="submit" class="btn btn-default">제출</button>
-    </form>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %} 
+            {{ form.non_field_errors }}
+            <div class="form-group row">
+                {{ form.status.errors }}
+                <div class="col-lg-2">
+                    <label for="{{ form.status.id_for_label }}">상태:</label>
+                    <select class="form-control" name="{{ form.status.html_name }}" id="{{ form.status.id_for_label }}">
+                        <option value="0" {% if 0 == form.status.value %}selected="selected"{% endif %}>등록</option>
+                        <option value="1" {% if 1 == form.status.value %}selected="selected"{% endif %}>승인</option>
+                        <option value="2" {% if 2 == form.status.value %}selected="selected"{% endif %}>처리</option>
+                        <option value="3" {% if 3 == form.status.value %}selected="selected"{% endif %}>완료</option>
+                        <option value="4" {% if 4 == form.status.value %}selected="selected"{% endif %}>반려</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ form.title.errors }}
+                <div class="col-lg-3">
+                    <label for="{{ form.title.id_for_label }}">제목:</label>
+                    <input type="text" class="form-control" name="{{ form.title.html_name }}" id="{{ form.title.id_for_label }}" {% if form.title.value %}value="{{ form.title.value }}"{% endif %}>
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ form.desc.errors }}
+                <div class="col-lg-6">
+                    <label for="{{ form.desc.id_for_label }}">내용:</label>
+                    <input type="text" class="form-control" name="{{ form.desc.html_name }}" id="{{ form.desc.id_for_label }}" {% if form.desc.value %}value="{{ form.desc.value }}"{% endif %}>
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ form.attach.errors }}
+                <div class="col-lg-6">
+                    <label for="{{ form.attach.id_for_label }}">쿼리:</label>
+                    <textarea class="form-control" name="{{ form.attach.html_name }}" rows="6" id="{{ form.attach.id_for_label }}">{% if form.attach.value %}{{ form.attach.value }}{% endif %}</textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ form.secret_key.errors }}
+                <div class="col-lg-3">
+                    <label for="{{ form.secret_key.id_for_label }}">압축암호:</label>
+                    <input type="text" class="form-control" name="{{ form.secret_key.html_name }}" id="{{ form.secret_key.id_for_label }}" {% if form.secret_key.value %}value="{{ form.secret_key.value }}"{% endif %}>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-default">제출</button>
+        </form>
+    </div>
 {% endblock %}
