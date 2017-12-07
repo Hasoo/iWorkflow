@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login',
     'board',
+    'rest_framework',
+    'iwrestful',
 ]
 
 MIDDLEWARE = [
