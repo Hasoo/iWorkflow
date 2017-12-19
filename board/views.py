@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.core.urlresolvers import reverse_lazy, reverse
 from board.models import Workflow
+from fcm.utils import get_device_model
 
 class WorkflowListView(ListView):
 
@@ -42,7 +43,15 @@ class WorkflowCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.worker = self.request.session['member_id']
+        response = super(WorkflowCreate, self).form_valid(form)
+        Device = get_device_model()
+        Device.objects.all().send_message({'message':form.cleaned_data['title']})
+        return response
+    """
+    def form_valid(self, form):
+        form.instance.worker = self.request.session['member_id']
         return super(WorkflowCreate, self).form_valid(form)
+    """
 
 class WorkflowUpdate(UpdateView):
 

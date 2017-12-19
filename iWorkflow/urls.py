@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^board/', include('board.urls')),
     url(r'^rest-api/', include('rest_framework.urls')),
     url(r'^iwrest/', include('iwrestful.urls')),
+    url(r'fcm/', include('fcm.urls')),
 ]

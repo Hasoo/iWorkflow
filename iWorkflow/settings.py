@@ -28,7 +28,7 @@ SECRET_KEY = 'x25)+487qd9acls5yc)!(f%6=1xz9aasdqb26fy-#i04@_gi-t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','192.168.0.24']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.0.24', '10.0.2.2']
 
 
 # Application definition
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'board',
     'rest_framework',
     'iwrestful',
+    'fcm',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +145,7 @@ STATICFILES_DIRS = (
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+FCM_APIKEY = "AAAAvbF8hW8:APA91bHWUT7qpLrZwglo7lLe_aqUwiYCA2eScXCKKXVI_gKvQKKlsFvqwxHaJPf6pen-dJGz_NMaLbdnECFHudpTZwrOxln27l25H1KkpmAzCetNDUwCXZ5B7zpb92ZTlsYsxH0dECXX"
+FCM_DEVICE_MODEL = "board.MyDevice"
+FCM_MAX_RECIPIENTS = 10

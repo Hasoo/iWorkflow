@@ -1,4 +1,5 @@
 from django.db import models
+from fcm.models import AbstractDevice
 
 class Workflow(models.Model):
     seq = models.AutoField(primary_key=True)
@@ -14,3 +15,6 @@ class Workflow(models.Model):
     class Meta:
         managed = False
         db_table = 'board_workflow'
+
+class MyDevice(AbstractDevice):
+    pass
