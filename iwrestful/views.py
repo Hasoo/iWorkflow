@@ -12,7 +12,7 @@ class WorkflowSerializer(serializers.ModelSerializer):
         #fields = ('seq', 'title')
 
 class WorkflowListAPI(GenericAPIView, mixins.ListModelMixin):
-    queryset = Workflow.objects.filter(status=1)
+    queryset = Workflow.objects.filter(status=0)
     serializer_class = WorkflowSerializer
 
     def get(self, request, *args, **kwargs):

@@ -4,6 +4,7 @@ class LoginAdmin(models.Model):
     user_id = models.CharField(max_length=20, primary_key=True)
     user_pass = models.CharField(max_length=64)
     user_name = models.CharField(max_length=50)
+    user_email = models.CharField(max_length=256)
 
     class Meta:
         managed = False
